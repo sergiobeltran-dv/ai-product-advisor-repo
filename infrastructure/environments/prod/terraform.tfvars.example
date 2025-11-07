@@ -1,0 +1,165 @@
+# Azure Provider Configuration
+subscription_id = "cf5782a6-c27d-4355-946a-e6e1a943540a"  # electrorent-prod-sub
+tenant_id       = "56a19319-c3b2-4e35-8892-6ccd137b4321"  # Electro Rent
+
+# General Configuration
+environment  = "prod"
+location     = "eastus"
+project_name = "aiproductadvisor"
+
+# Networking Configuration
+vnet_address_space = ["10.1.0.0/16"]
+
+subnet_config = {
+  app_service = {
+    name             = "prod-aiproductadvisor-eastus-snet"
+    address_prefixes = ["10.1.1.0/24"]
+    service_endpoints = ["Microsoft.Web"]
+    delegation = {
+      name         = "app-service-delegation"
+      service_name = "Microsoft.Web/serverFarms"
+      actions      = ["Microsoft.Network/virtualNetworks/subnets/action"]
+    }
+  }
+  function = {
+    name             = "prod-aiproductadvisor-eastus-func-snet"
+    address_prefixes = ["10.1.2.0/24"]
+    service_endpoints = ["Microsoft.Web"]
+    delegation = {
+      name         = "function-delegation"
+      service_name = "Microsoft.Web/serverFarms"
+      actions      = ["Microsoft.Network/virtualNetworks/subnets/action"]
+    }
+  }
+  private_endpoints = {
+    name             = "prod-aiproductadvisor-eastus-pe-snet"
+    address_prefixes = ["10.1.3.0/24"]
+    service_endpoints = []
+  }
+  firewall = {
+    name             = "AzureFirewallSubnet"
+    address_prefixes = ["10.1.4.0/26"]
+  }
+  gateway = {
+    name             = "GatewaySubnet"
+    address_prefixes = ["10.1.5.0/27"]
+  }
+}
+
+# Security Configuration
+enable_firewall     = true   # Enable Azure Firewall for production
+enable_vpn_gateway  = true   # Enable VPN Gateway for production
+vpn_gateway_sku     = "VpnGw2"  # Higher SKU for production (VpnGw2/3 per spreadsheet)
+
+# Azure OpenAI Configuration
+openai_sku = "S0"
+
+openai_model_deployments = {
+  gpt4 = {
+    name          = "gpt-4"
+    model_format  = "OpenAI"
+    model_name    = "gpt-4"
+    model_version = "turbo-2024-04-09"
+    scale_type    = "Standard"
+    capacity      = 30  # Higher capacity for production
+  }
+  gpt4_32k = {
+    name          = "gpt-4-32k"
+    model_format  = "OpenAI"
+    model_name    = "gpt-4-32k"
+    model_version = "0613"
+    scale_type    = "Standard"
+    capacity      = 20
+  }
+  gpt35 = {
+    name          = "gpt-35-turbo"
+    model_format  = "OpenAI"
+    model_name    = "gpt-35-turbo"
+    model_version = "0125"
+    scale_type    = "Standard"
+    capacity      = 30
+  }
+  embedding = {
+    name          = "text-embedding-ada-002"
+    model_format  = "OpenAI"
+    model_name    = "text-embedding-ada-002"
+    model_version = "2"
+    scale_type    = "Standard"
+    capacity      = 30
+  }
+}
+
+# Azure AI Search Configuration
+search_sku            = "standard"  # Production-grade SKU
+search_replica_count  = 2  # High availability with 2 replicas
+search_partition_count = 1
+
+# Cosmos DB Configuration
+cosmos_consistency_level = "Session"
+
+cosmos_databases = {
+  chat_history = {
+    name = "chat-history"
+    autoscale_settings = {
+      max_throughput = 4000  # Autoscale for production
+    }
+    containers = [
+      {
+        name                = "sessions"
+        partition_key_paths = ["/userId"]
+        autoscale_settings = {
+          max_throughput = 4000
+        }
+      },
+      {
+        name                = "messages"
+        partition_key_paths = ["/sessionId"]
+        autoscale_settings = {
+          max_throughput = 4000
+        }
+      }
+    ]
+  }
+  audit = {
+    name = "audit"
+    autoscale_settings = {
+      max_throughput = 4000
+    }
+    containers = [
+      {
+        name                = "logs"
+        partition_key_paths = ["/timestamp"]
+        autoscale_settings = {
+          max_throughput = 4000
+        }
+        default_ttl = 7776000  # 90 days for production
+      }
+    ]
+  }
+}
+
+# Redis Cache Configuration
+redis_sku_name = "Premium"  # Premium SKU for production
+redis_capacity = 2  # P2 for production
+
+# App Service Configuration
+app_service_plan_sku = "P2v3"  # Premium v3 for production
+app_service_os_type  = "Linux"
+
+# Function App Configuration
+function_app_sku = "EP2"  # Premium plan EP2 for production
+
+# Fabric Configuration
+fabric_capacity_name = "prodaiproductadvisoreastusfc"
+fabric_sku           = "F16"  # Production SKU (F16 provides good performance)
+
+# Tags
+tags = {
+  environment = "prod"
+  project     = "ai-product-advisor"
+  managed-by  = "terraform"
+  cost-center = "IT"
+  client      = "electrorent"
+  criticality = "high"
+  backup      = "required"
+}

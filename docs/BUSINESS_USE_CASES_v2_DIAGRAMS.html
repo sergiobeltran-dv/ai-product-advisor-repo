@@ -1,0 +1,634 @@
+<!DOCTYPE html><html><head>
+      <title>BUSINESS_USE_CASES_v2_DIAGRAMS</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\sergio.beltran\.cursor\extensions\shd101wyy.markdown-preview-enhanced-0.8.20-universal\crossnote\dependencies\katex\katex.min.css">
+      
+      
+      <script type="text/javascript" src="file:///c:\Users\sergio.beltran\.cursor\extensions\shd101wyy.markdown-preview-enhanced-0.8.20-universal\crossnote\dependencies\mermaid\mermaid.min.js" charset="UTF-8"></script>
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="business-use-cases-sales-to-product-group-interactions">Business Use Cases: Sales to Product Group Interactions </h1>
+<h2 id="electrorent-ai-product-advisor-mvp">ElectroRent AI Product Advisor MVP </h2>
+<p><strong>Project</strong>: ElectroRent AI Product Advisor MVP<br>
+<strong>Document Version</strong>: 2.0 (Enhanced with Discovery Calls - Mermaid Diagrams)<br>
+<strong>Date</strong>: November 2025<br>
+<strong>Stakeholders</strong>: Sales Team, Product Group, Management</p>
+<hr>
+<h2 id="executive-summary">Executive Summary </h2>
+<p>This document outlines real-world business use cases derived from discovery calls with the ElectroRent Product Group and Sales team. These scenarios represent the core interactions between Sales and Product Group that the AI Product Advisor solution will automate and enhance. The system reduces escalations to Product Group by 70-80% while enabling Sales to serve customers faster with accurate, data-driven recommendations.</p>
+<hr>
+<h2 id="understanding-the-business-context">Understanding the Business Context </h2>
+<h3 id="current-process-flow">Current Process Flow </h3>
+<div class="mermaid">graph TD
+    A["Customer Inquiry"] --&gt; B["Sales Rep&lt;br/&gt;Doesn't Know Answer"]
+    B --&gt; C["Sales Contacts&lt;br/&gt;Product Group"]
+    C --&gt; D["Product Group&lt;br/&gt;Manual Research"]
+    D --&gt; E["Check Perfect&lt;br/&gt;Inventory System"]
+    D --&gt; F["Review Specifications&lt;br/&gt;and Data Sheets"]
+    D --&gt; G["Look up D365&lt;br/&gt;European Warehouse"]
+    E --&gt; H["Product Group&lt;br/&gt;Responds"]
+    F --&gt; H
+    G --&gt; H
+    H --&gt; I["Sales Communicates&lt;br/&gt;Back to Customer"]
+    I --&gt; J["Follow-up Questions?"]
+    J --&gt;|Yes| C
+    J --&gt;|No| K["Deal Closed&lt;br/&gt;or Lost"]
+    
+    style A fill:#ff6b6b
+    style K fill:#51cf66
+    style C fill:#ffd43b
+    style H fill:#ffd43b
+</div><p><strong>Current State Characteristics:</strong></p>
+<ul>
+<li>Response Time: 30 minutes to 4 hours</li>
+<li>Multiple Escalations: Sales to PG to Warehouse to Supplier</li>
+<li>Information Silos: Data scattered across Perfect, D365, Salesforce</li>
+<li>Customer Wait: Competitor calls during delay</li>
+<li>Resource Cost: Senior staff research for routine queries</li>
+</ul>
+<hr>
+<h3 id="desired-future-state-with-ai-product-advisor">Desired Future State with AI Product Advisor </h3>
+<div class="mermaid">graph TD
+    A["Customer Inquiry"] --&gt; B["Sales Rep Uses&lt;br/&gt;AI Product Advisor"]
+    B --&gt; C["System Provides&lt;br/&gt;Instant Response"]
+    C --&gt; D["Live Inventory Data"]
+    C --&gt; E["Real-time Pricing"]
+    C --&gt; F["Alternative Options"]
+    C --&gt; G["Technical Specs"]
+    D --&gt; H["Sales Gives Immediate&lt;br/&gt;Answer to Customer"]
+    E --&gt; H
+    F --&gt; H
+    G --&gt; H
+    H --&gt; I["Complex or Unclear?"]
+    I --&gt;|No| J["Deal Closed"]
+    I --&gt;|Yes| K["Escalate to PG&lt;br/&gt;with AI Analysis"]
+    K --&gt; L["PG Makes&lt;br/&gt;Quick Decision"]
+    L --&gt; J
+    
+    style A fill:#4c6ef5
+    style H fill:#51cf66
+    style J fill:#51cf66
+    style B fill:#15aabf
+</div><p><strong>Future State Characteristics:</strong></p>
+<ul>
+<li>Response Time: Seconds to minutes</li>
+<li>Single Interface: One chatbot for all queries</li>
+<li>Integrated Data: Real-time access to all systems</li>
+<li>Customer Satisfaction: Immediate answers</li>
+<li>Resource Efficiency: PG focuses only on complex decisions</li>
+</ul>
+<hr>
+<h2 id="core-use-cases-from-discovery-calls">Core Use Cases from Discovery Calls </h2>
+<h3 id="product-selection-scenario-breakdown">Product Selection Scenario Breakdown </h3>
+<p>During discovery calls, Product Group identified three core ways customers express their needs:</p>
+<div class="mermaid">graph TD
+    A["Customer Need"] --&gt; B{How Expressed?}
+    B --&gt;|Type 1| C["Specific Equipment&lt;br/&gt;Part Number Known"]
+    B --&gt;|Type 2| D["Application/Test Type&lt;br/&gt;Describe What to Test"]
+    B --&gt;|Type 3| E["Problem Description&lt;br/&gt;Vague/Unclear Need"]
+    
+    C --&gt; C1["AI Resolution: 90%"]
+    C --&gt; C2["Escalation: 10%"]
+    
+    D --&gt; D1["AI Resolution: 50-60%"]
+    D --&gt; D2["Escalation: 40-50%"]
+    
+    E --&gt; E1["AI Resolution: 10-20%"]
+    E --&gt; E2["Escalation: 80-90%&lt;br/&gt;Refer to AE"]
+    
+    style C fill:#a8e6cf
+    style D fill:#ffd3b6
+    style E fill:#ffaaa5
+</div><hr>
+<h4 id="type-1-specific-equipment-part-number-known">Type 1: Specific Equipment (Part Number Known) </h4>
+<p><strong>Customer Says</strong>: "Do you have model XYZ-1000 available?"</p>
+<p><strong>Resolution Path</strong>:</p>
+<div class="mermaid">graph LR
+    A["Part Number&lt;br/&gt;Query"] --&gt; B["Check Perfect&lt;br/&gt;Inventory"]
+    B --&gt; C{Available&lt;br/&gt;Now?}
+    
+    C --&gt;|Yes| D["Return Available&lt;br/&gt;Warehouse Location"]
+    C --&gt;|No| E["Check Status"]
+    
+    E --&gt; F{Status?}
+    F --&gt;|In Repair| G["Calculate Lead&lt;br/&gt;Time"]
+    F --&gt;|On Order| H["Check ETA"]
+    F --&gt;|Broken| I["Search Alternatives"]
+    
+    G --&gt; J["Recommend:&lt;br/&gt;Wait vs Substitute"]
+    H --&gt; J
+    I --&gt; J
+    
+    D --&gt; K["Quote&lt;br/&gt;Complete"]
+    J --&gt; K
+    
+    style A fill:#e0f2f7
+    style K fill:#c8e6c9
+</div><hr>
+<h4 id="type-2-applicationtest-type">Type 2: Application/Test Type </h4>
+<p><strong>Customer Says</strong>: "We need to test for RF interference in the 2-4 GHz band while driving around"</p>
+<p><strong>Resolution Path</strong>:</p>
+<div class="mermaid">graph LR
+    A["Application&lt;br/&gt;Description"] --&gt; B["Understand&lt;br/&gt;Requirements"]
+    B --&gt; C["Match to Equipment&lt;br/&gt;Capabilities"]
+    C --&gt; D["Identify&lt;br/&gt;Prerequisites"]
+    D --&gt; E{All Prereqs&lt;br/&gt;Available?}
+    
+    E --&gt;|Yes| F["Rank Options&lt;br/&gt;by Spec Match"]
+    E --&gt;|No| G["Escalate for&lt;br/&gt;PG Decision"]
+    
+    F --&gt; H["Return Ranked&lt;br/&gt;Recommendations&lt;br/&gt;with Pricing"]
+    
+    style A fill:#fff3e0
+    style H fill:#c8e6c9
+</div><p><strong>Key Business Rule</strong>:<br>
+"You can UP-sell bandwidth (customer needs 13 GHz, we offer 16 GHz) but CANNOT DOWN-sell bandwidth (customer needs 13 GHz, we only have 8 GHz = no match)"</p>
+<hr>
+<h4 id="type-3-problem-description-vague">Type 3: Problem Description (Vague) </h4>
+<p><strong>Customer Says</strong>: "We're having signal issues with our test setup"</p>
+<p><strong>Resolution Path</strong>:</p>
+<div class="mermaid">graph LR
+    A["Vague Problem&lt;br/&gt;Description"] --&gt; B["Ask Clarifying&lt;br/&gt;Questions"]
+    B --&gt; C{Enough Info&lt;br/&gt;Gathered?}
+    
+    C --&gt;|Yes| D["Suggest Equipment&lt;br/&gt;Based on Patterns"]
+    C --&gt;|No| E["Ask More&lt;br/&gt;Questions"]
+    
+    E --&gt; C
+    D --&gt; F{Confidence&lt;br/&gt;High?}
+    
+    F --&gt;|Yes| G["Return&lt;br/&gt;Recommendations"]
+    F --&gt;|No| H["Escalate to&lt;br/&gt;Application Engineer"]
+    
+    style A fill:#fce4ec
+    style G fill:#c8e6c9
+    style H fill:#ffccbc
+</div><hr>
+<h2 id="real-world-use-case-examples">Real-World Use Case Examples </h2>
+<h3 id="use-case-1-power-supply-substitution-decision">USE CASE 1: Power Supply Substitution Decision </h3>
+<p><strong>Actors</strong>: Sales Rep (Sarah), Product Group (John), Customer (General Dynamics)</p>
+<p><strong>Scenario</strong>: Customer needs 1 kV DC, 25 amps power supply for circuit testing</p>
+<h4 id="what-happened-current-state">What Happened (Current State) </h4>
+<div class="mermaid">sequenceDiagram
+    actor Customer
+    participant Sarah as Sales Rep
+    participant John as Product Group
+    participant Perfect as Perfect System
+    participant D365 as D365 Europe
+    participant Supplier as Supplier
+
+    Customer-&gt;&gt;Sarah: Need 1kV DC, 25A supply&lt;br/&gt;By Dec 15
+    Sarah-&gt;&gt;Perfect: Search for power supplies
+    Perfect--&gt;&gt;Sarah: Found 5 options
+    Sarah-&gt;&gt;John: Which one should we use?
+    John-&gt;&gt;Perfect: Check all 5 in detail
+    John-&gt;&gt;D365: Check European warehouse
+    John-&gt;&gt;Supplier: Check Delta lead times
+    Supplier--&gt;&gt;John: 5 weeks for repair
+    John-&gt;&gt;Sarah: Options: Buy new or upgrade&lt;br/&gt;Takes 2-3 hours analysis
+    Sarah-&gt;&gt;Customer: Here are options...&lt;br/&gt;Customer calls competitor
+    Customer--&gt;&gt;Sarah: We'll call you back
+</div><p><strong>Timeline</strong>: 2-3 hours | <strong>Outcome</strong>: Lost deal to competitor</p>
+<hr>
+<h4 id="with-ai-product-advisor-future-state">With AI Product Advisor (Future State) </h4>
+<div class="mermaid">graph TD
+    A["Query: 1kV DC, 25A&lt;br/&gt;Need by 12/15"] --&gt; B["AI Analyzes All 5 Units"]
+    B --&gt; C["Real-Time Status Check"]
+    C --&gt; C1["Delta: 2 available&lt;br/&gt;2 broken - 5 weeks repair"]
+    C --&gt; C2["DC-5: 1 available&lt;br/&gt;0 in repair"]
+    C --&gt; C3["Roadie: 5 available&lt;br/&gt;0 in repair"]
+    
+    B --&gt; D["Pull Real-Time Pricing"]
+    D --&gt; D1["Delta: 300/month"]
+    D --&gt; D2["DC-5: 1000/month"]
+    D --&gt; D3["Roadie: 800/month"]
+    
+    B --&gt; E["Calculate Lead Times"]
+    E --&gt; E1["Can meet 12/15?"]
+    
+    B --&gt; F["Generate Recommendation"]
+    F --&gt; F1["Rank 1: DC-5 - Available NOW&lt;br/&gt;1000/month - Meets Spec"]
+    F --&gt; F2["Rank 2: Roadie - Available NOW&lt;br/&gt;800/month - Meets Spec"]
+    F --&gt; F3["Rank 3: Delta - 5 week wait&lt;br/&gt;300/month - If you wait"]
+    
+    F1 --&gt; G["Sales Presents Options&lt;br/&gt;to Customer"]
+    F2 --&gt; G
+    F3 --&gt; G
+    
+    style A fill:#e3f2fd
+    style G fill:#c8e6c9
+</div><p><strong>Timeline</strong>: 10-15 seconds | <strong>Outcome</strong>: Deal closed immediately</p>
+<hr>
+<h3 id="use-case-2-oscilloscope-with-probes-package-deal">USE CASE 2: Oscilloscope with Probes Package Deal </h3>
+<p><strong>Actors</strong>: Sales Rep, Product Group (John), Customer (Tech startup)</p>
+<p><strong>Scenario</strong>: Customer needs 13 GHz oscilloscope for PCI Express 5 testing</p>
+<h4 id="decision-tree-for-complex-configuration">Decision Tree for Complex Configuration </h4>
+<div class="mermaid">graph TD
+    A["Customer Need:&lt;br/&gt;13 GHz Scope&lt;br/&gt;PCI Express 5 Testing"] --&gt; B["Search Available Inventory"]
+    
+    B --&gt; C{13 GHz Available?}
+    C --&gt;|No| D["Check Alternatives:&lt;br/&gt;16 GHz Available?"]
+    C --&gt;|Yes| E["Return 13 GHz Options"]
+    
+    D --&gt; F{16 GHz Available?}
+    F --&gt;|Yes| G["Evaluate Bandwidth&lt;br/&gt;Up-sell Acceptable"]
+    F --&gt;|No| H["Check Other Options"]
+    
+    G --&gt; I["Identify Prerequisites"]
+    I --&gt; I1["Probes Required: Yes"]
+    I --&gt; I2["Probe Sets Needed: 2"]
+    
+    I1 --&gt; J["Check Probe Availability"]
+    J --&gt; J1["In Stock: 1 set"]
+    J --&gt; J2["On Order: 2 sets&lt;br/&gt;ETA: TBD"]
+    
+    J1 --&gt; K["Decision Point"]
+    J2 --&gt; K
+    
+    K --&gt; L{How to Configure?}
+    L --&gt;|Option A| M["16GHz + 2 Probes&lt;br/&gt;10K/month&lt;br/&gt;Second probe on backorder"]
+    L --&gt;|Option B| N["20GHz + 2 Probes&lt;br/&gt;12K/month&lt;br/&gt;More bandwidth"]
+    L --&gt;|Option C| O["16GHz + 1 Probe&lt;br/&gt;8K/month&lt;br/&gt;Second probe delayed"]
+    
+    M --&gt; P["Escalate Probe&lt;br/&gt;Purchase to PG&lt;br/&gt;for Approval"]
+    N --&gt; Q["Quote Complete"]
+    O --&gt; Q
+    
+    style A fill:#fff3e0
+    style Q fill:#c8e6c9
+    style P fill:#ffccbc
+</div><hr>
+<h3 id="use-case-3-multi-location-inventory-search">USE CASE 3: Multi-Location Inventory Search </h3>
+<p><strong>Actors</strong>: Sales Rep (US-based), Product Group, Customer (International)</p>
+<p><strong>Scenario</strong>: US Customer needs equipment, not available in US warehouse</p>
+<h4 id="geographic-prioritization-logic">Geographic Prioritization Logic </h4>
+<div class="mermaid">graph TD
+    A["Customer Query:&lt;br/&gt;US-based Customer"] --&gt; B["Set Geographic Priority"]
+    
+    B --&gt; C["Priority 1: US Warehouses"]
+    C --&gt; D{Found?}
+    
+    D --&gt;|Yes| E["Return US Options&lt;br/&gt;Fastest Delivery"]
+    D --&gt;|No| F["Ask User Permission"]
+    
+    F --&gt; G{Search Europe?}
+    
+    G --&gt;|No| H["Return No Results&lt;br/&gt;or Alternative Options"]
+    G --&gt;|Yes| I["Priority 2:&lt;br/&gt;European Warehouses"]
+    
+    I --&gt; J["Check D365 Inventory"]
+    J --&gt; J1["Denmark Warehouse"]
+    J --&gt; J2["Belgium Warehouse"]
+    
+    J1 --&gt; K["Calculate Lead Time"]
+    J2 --&gt; K
+    
+    K --&gt; L{Can Meet&lt;br/&gt;Need Date?}
+    L --&gt;|Yes| M["Return EU Option&lt;br/&gt;with Lead Time"]
+    L --&gt;|No| N["Inform User:&lt;br/&gt;Cannot Meet Timeline"]
+    
+    E --&gt; O["Sales Presents Options"]
+    M --&gt; O
+    N --&gt; O
+    
+    style A fill:#e3f2fd
+    style O fill:#c8e6c9
+</div><hr>
+<h2 id="business-rules--escalation-triggers">Business Rules &amp; Escalation Triggers </h2>
+<h3 id="the-business-rules-framework">The Business Rules Framework </h3>
+<div class="mermaid">graph TD
+    A["Customer Query&lt;br/&gt;Arrives at AI"] --&gt; B["Apply Business Rules"]
+    
+    B --&gt; C["Rule Check:&lt;br/&gt;Incomplete Requirements?"]
+    C --&gt;|Yes| D["Ask Clarifying Questions"]
+    D --&gt; E{Sufficient Info?}
+    E --&gt;|No| F["Escalate to Product Group"]
+    E --&gt;|Yes| G["Continue Processing"]
+    
+    G --&gt; H["Rule Check:&lt;br/&gt;Complex Configuration?"]
+    H --&gt;|Yes| I["Show Prerequisites&lt;br/&gt;Flag for PG"]
+    H --&gt;|No| J["Continue"]
+    
+    J --&gt; K["Rule Check:&lt;br/&gt;Buy vs Substitute Decision?"]
+    K --&gt;|Yes| L["Present Trade-offs&lt;br/&gt;Escalate for Decision"]
+    K --&gt;|No| M["Continue"]
+    
+    M --&gt; N["Rule Check:&lt;br/&gt;Confidence Level?"]
+    N --&gt;|Low| O["Flag with Confidence %&lt;br/&gt;Recommend Escalation"]
+    N --&gt;|High| P["Generate Recommendation"]
+    
+    P --&gt; Q{Require PG Sign-off?}
+    Q --&gt;|Yes| R["Escalate with Analysis"]
+    Q --&gt;|No| S["Provide Direct Answer"]
+    
+    F --&gt; T["Route to Product Group"]
+    L --&gt; T
+    R --&gt; T
+    S --&gt; U["Sales Gets Answer"]
+    
+    style A fill:#e3f2fd
+    style U fill:#c8e6c9
+    style T fill:#ffccbc
+</div><hr>
+<h2 id="key-data-points-required">Key Data Points Required </h2>
+<h3 id="data-dependency-map">Data Dependency Map </h3>
+<div class="mermaid">graph TD
+    subgraph Perfect["Perfect Inventory System"]
+        P1["Equipment Model&lt;br/&gt;Description"]
+        P2["Real-Time Availability&lt;br/&gt;Status"]
+        P3["Lead Time Info"]
+        P4["Configuration Codes"]
+        P5["Software Licenses"]
+    end
+    
+    subgraph D365["D365 European System"]
+        D1["European Inventory"]
+        D2["Regional Lead Times"]
+        D3["Regional Pricing"]
+    end
+    
+    subgraph Pricing["Pricing Data"]
+        PR1["30-Day Rental Rate"]
+        PR2["List Price"]
+        PR3["Add-On Pricing"]
+        PR4["Last Updated Date"]
+    end
+    
+    subgraph Specs["Product Specifications"]
+        S1["Feature Interdependencies"]
+        S2["Configuration Matrices"]
+        S3["Compatible Accessories"]
+        S4["Software Compatibility"]
+    end
+    
+    AI["AI Product Advisor&lt;br/&gt;Engine"]
+    
+    P1 --&gt; AI
+    P2 --&gt; AI
+    P3 --&gt; AI
+    P4 --&gt; AI
+    P5 --&gt; AI
+    D1 --&gt; AI
+    D2 --&gt; AI
+    D3 --&gt; AI
+    PR1 --&gt; AI
+    PR2 --&gt; AI
+    PR3 --&gt; AI
+    PR4 --&gt; AI
+    S1 --&gt; AI
+    S2 --&gt; AI
+    S3 --&gt; AI
+    S4 --&gt; AI
+    
+    style AI fill:#bbdefb
+    style Perfect fill:#c8e6c9
+    style D365 fill:#c8e6c9
+    style Pricing fill:#ffe0b2
+    style Specs fill:#f8bbd0
+</div><hr>
+<h2 id="pricing-awareness--transparency">Pricing Awareness &amp; Transparency </h2>
+<h3 id="real-time-pricing-flow">Real-Time Pricing Flow </h3>
+<div class="mermaid">graph LR
+    A["Customer Query&lt;br/&gt;for Equipment"] --&gt; B["Retrieve Latest Data&lt;br/&gt;from Perfect"]
+    
+    B --&gt; C["Check Data Age"]
+    C --&gt; C1{Older than&lt;br/&gt;30 Days?}
+    
+    C1 --&gt;|Yes| D["Add Warning Flag"]
+    C1 --&gt;|No| E["Data is Fresh"]
+    
+    D --&gt; F["Display Pricing Card&lt;br/&gt;with Warning"]
+    E --&gt; F
+    
+    F --&gt; G["Show Recommendation&lt;br/&gt;with Price Details"]
+    
+    style A fill:#e3f2fd
+    style F fill:#c8e6c9
+    style D fill:#ffccbc
+</div><h3 id="equipment-recommendation-display">Equipment Recommendation Display </h3>
+<div class="mermaid">graph TD
+    A["Equipment Result"] --&gt; B["Display Card"]
+    
+    B --&gt; B1["Model Name&lt;br/&gt;&amp; Description"]
+    B --&gt; B2["Key Specifications"]
+    B --&gt; B3["Availability Status"]
+    B --&gt; B4["Warehouse Location"]
+    B --&gt; B5["30-Day Rental Price"]
+    B --&gt; B6["List Price"]
+    B --&gt; B7["Last Price Updated"]
+    B --&gt; B8["Required Accessories"]
+    B --&gt; B9["Alternative Options"]
+    B --&gt; B10["Action Buttons"]
+    
+    B7 --&gt; C{Price Age?}
+    C --&gt;|Recent| D["Green Indicator"]
+    C --&gt;|30+ Days| E["Yellow Warning"]
+    C --&gt;|60+ Days| F["Red Alert"]
+    
+    style A fill:#e3f2fd
+    style D fill:#c8e6c9
+    style E fill:#fff9c4
+    style F fill:#ffcdd2
+</div><hr>
+<h2 id="follow-up-questions-strategy">Follow-Up Questions Strategy </h2>
+<h3 id="smart-questioning-system">Smart Questioning System </h3>
+<div class="mermaid">graph TD
+    A["AI Recognizes&lt;br/&gt;Product Category"] --&gt; B{What Category?}
+    
+    B --&gt;|Oscilloscope| C["Ask Scope Questions"]
+    B --&gt;|Power Supply| D["Ask Supply Questions"]
+    B --&gt;|Spectrum Analyzer| E["Ask Analyzer Questions"]
+    
+    C --&gt; C1["What's the primary&lt;br/&gt;measurement app?"]
+    C --&gt; C2["What bandwidth&lt;br/&gt;needed?"]
+    C --&gt; C3["How many channels?"]
+    C --&gt; C4["Sampling rate?"]
+    C --&gt; C5["Probes needed?"]
+    C --&gt; C6["Brand preference?"]
+    
+    D --&gt; D1["Primary application?"]
+    D --&gt; D2["DC or AC+DC?"]
+    D --&gt; D3["Voltage range?"]
+    D --&gt; D4["Current rating?"]
+    D --&gt; D5["4-quadrant needed?"]
+    D --&gt; D6["Remote programming?"]
+    
+    E --&gt; E1["Measurement type?"]
+    E --&gt; E2["Frequency range?"]
+    E --&gt; E3["Lab or field?"]
+    E --&gt; E4["Real-time needed?"]
+    E --&gt; E5["Preamplifier needed?"]
+    
+    C1 --&gt; X["Compile into Query"]
+    C2 --&gt; X
+    C3 --&gt; X
+    C4 --&gt; X
+    C5 --&gt; X
+    C6 --&gt; X
+    
+    X --&gt; Y["Search with Full Context"]
+    Y --&gt; Z["Return Optimized Results"]
+    
+    style A fill:#e3f2fd
+    style Z fill:#c8e6c9
+</div><hr>
+<h2 id="success-metrics-overview">Success Metrics Overview </h2>
+<h3 id="response-time-improvement">Response Time Improvement </h3>
+<div class="mermaid">graph LR
+    subgraph Before["BEFORE AI System"]
+        B1["Type 1 Query:&lt;br/&gt;15 minutes"]
+        B2["Type 2 Query:&lt;br/&gt;45 minutes"]
+        B3["Type 3 Query:&lt;br/&gt;2 hours"]
+    end
+    
+    subgraph After["AFTER AI System"]
+        A1["Type 1 Query:&lt;br/&gt;2 minutes"]
+        A2["Type 2 Query:&lt;br/&gt;5 minutes"]
+        A3["Type 3 Query:&lt;br/&gt;15 min escalation"]
+    end
+    
+    Before --&gt; Results
+    After --&gt; Results
+    
+    Results --&gt; R1["87% Faster"]
+    Results --&gt; R2["89% Faster"]
+    Results --&gt; R3["87% Faster"]
+    
+    style B1 fill:#ffcdd2
+    style B2 fill:#ffcdd2
+    style B3 fill:#ffcdd2
+    style A1 fill:#c8e6c9
+    style A2 fill:#c8e6c9
+    style A3 fill:#c8e6c9
+</div><hr>
+<h3 id="escalation-reduction">Escalation Reduction </h3>
+<div class="mermaid">graph LR
+    subgraph Before["BEFORE: 40-60 Escalations/Day"]
+        B1["Type 1:&lt;br/&gt;20% escalation"]
+        B2["Type 2:&lt;br/&gt;60% escalation"]
+        B3["Type 3:&lt;br/&gt;85% escalation"]
+    end
+    
+    subgraph After["AFTER: 12-18 Escalations/Day"]
+        A1["Type 1:&lt;br/&gt;10% escalation"]
+        A2["Type 2:&lt;br/&gt;40% escalation"]
+        A3["Type 3:&lt;br/&gt;85% escalation&lt;br/&gt;→ Refer to AE"]
+    end
+    
+    Before --&gt; Compare["70% Overall&lt;br/&gt;Escalation&lt;br/&gt;Reduction"]
+    After --&gt; Compare
+    
+    style Before fill:#ffcdd2
+    style After fill:#c8e6c9
+    style Compare fill:#bbdefb
+</div><h2 id="product-taxonomy">Product Taxonomy </h2>
+<h3 id="electrorent-product-hierarchy">ElectroRent Product Hierarchy </h3>
+<div class="mermaid">graph TD
+    A["Segment&lt;br/&gt;Electronic Test Equipment"]
+    
+    B["Class&lt;br/&gt;Oscilloscopes"]
+    
+    C["Part Family&lt;br/&gt;UXR Series"]
+    
+    D["Model&lt;br/&gt;UXR-16GHz"]
+    
+    E["Part Number&lt;br/&gt;123-4567-01"]
+    
+    F["Asset Serial&lt;br/&gt;KEYX-UXR-0045"]
+    
+    A --&gt; B
+    B --&gt; C
+    C --&gt; D
+    D --&gt; E
+    E --&gt; F
+    
+    style A fill:#e3f2fd
+    style B fill:#bbdefb
+    style C fill:#90caf9
+    style D fill:#64b5f6
+    style E fill:#42a5f5
+    style F fill:#2196f3
+</div><hr>
+<h2 id="appendix-quick-reference-guide">Appendix: Quick Reference Guide </h2>
+<h3 id="when-to-escalate-decision-tree">When to Escalate Decision Tree </h3>
+<div class="mermaid">graph TD
+    A["Query Received"] --&gt; B{Meets All of:&lt;br/&gt;1. Complete Info&lt;br/&gt;2. Clear Status&lt;br/&gt;3. High Confidence}
+    
+    B --&gt;|Yes| C["Provide Direct&lt;br/&gt;Recommendation"]
+    B --&gt;|No| D["Escalate to&lt;br/&gt;Product Group"]
+    
+    C --&gt; E["Sales Closes&lt;br/&gt;Deal"]
+    D --&gt; F["PG Provides&lt;br/&gt;Expert Input"]
+    F --&gt; E
+    
+    style A fill:#e3f2fd
+    style C fill:#c8e6c9
+    style E fill:#c8e6c9
+    style D fill:#ffccbc
+</div><hr>
+<p><strong>End of Document</strong></p>
+
+      </div>
+      
+      
+    
+    
+    <script type="module">
+// TODO: If ZenUML gets integrated into mermaid in the future,
+//      we can remove the following lines.
+
+
+var MERMAID_CONFIG = ({"startOnLoad":false});
+if (typeof MERMAID_CONFIG !== 'undefined') {
+  MERMAID_CONFIG.startOnLoad = false
+  MERMAID_CONFIG.cloneCssStyles = false
+  MERMAID_CONFIG.theme = "default"
+}
+
+mermaid.initialize(MERMAID_CONFIG || {})
+if (typeof(window['Reveal']) !== 'undefined') {
+  function mermaidRevealHelper(event) {
+    var currentSlide = event.currentSlide
+    var diagrams = currentSlide.querySelectorAll('.mermaid')
+    for (var i = 0; i < diagrams.length; i++) {
+      var diagram = diagrams[i]
+      if (!diagram.hasAttribute('data-processed')) {
+        mermaid.init(null, diagram, ()=> {
+          Reveal.slide(event.indexh, event.indexv)
+        })
+      }
+    }
+  }
+  Reveal.addEventListener('slidetransitionend', mermaidRevealHelper)
+  Reveal.addEventListener('ready', mermaidRevealHelper)
+  await mermaid.run({
+    nodes: document.querySelectorAll('.mermaid')
+  })
+} else {
+  await mermaid.run({
+    nodes: document.querySelectorAll('.mermaid')
+  })
+}
+</script>
+    
+    
+    
+  
+    </body></html>

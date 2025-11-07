@@ -1,0 +1,114 @@
+# Azure Provider Configuration
+subscription_id = "ca9f1f9c-1617-4cfa-8f5a-55346b27c16c"  # electrorent-ai-poc-sub
+tenant_id       = "56a19319-c3b2-4e35-8892-6ccd137b4321"  # Electro Rent
+
+# General Configuration
+environment  = "sandbox"
+location     = "eastus"
+project_name = "aiproductadvisor"
+
+# Networking Configuration
+vnet_address_space = ["10.2.0.0/16"]
+
+subnet_config = {
+  app_service = {
+    name             = "sandbox-aiproductadvisor-eastus-snet"
+    address_prefixes = ["10.2.1.0/24"]
+    service_endpoints = ["Microsoft.Web"]
+    delegation = {
+      name         = "app-service-delegation"
+      service_name = "Microsoft.Web/serverFarms"
+      actions      = ["Microsoft.Network/virtualNetworks/subnets/action"]
+    }
+  }
+  function = {
+    name             = "sandbox-aiproductadvisor-eastus-func-snet"
+    address_prefixes = ["10.2.2.0/24"]
+    service_endpoints = ["Microsoft.Web"]
+    delegation = {
+      name         = "function-delegation"
+      service_name = "Microsoft.Web/serverFarms"
+      actions      = ["Microsoft.Network/virtualNetworks/subnets/action"]
+    }
+  }
+  private_endpoints = {
+    name             = "sandbox-aiproductadvisor-eastus-pe-snet"
+    address_prefixes = ["10.2.3.0/24"]
+    service_endpoints = []
+  }
+}
+
+# Security Configuration
+enable_firewall     = false  # Disabled for sandbox
+enable_vpn_gateway  = false  # Disabled for sandbox
+vpn_gateway_sku     = "VpnGw1"
+
+# Azure OpenAI Configuration
+openai_sku = "S0"
+
+openai_model_deployments = {
+  gpt35 = {
+    name          = "gpt-35-turbo"
+    model_format  = "OpenAI"
+    model_name    = "gpt-35-turbo"
+    model_version = "0125"
+    scale_type    = "Standard"
+    capacity      = 10
+  }
+  embedding = {
+    name          = "text-embedding-ada-002"
+    model_format  = "OpenAI"
+    model_name    = "text-embedding-ada-002"
+    model_version = "2"
+    scale_type    = "Standard"
+    capacity      = 10
+  }
+}
+
+# Azure AI Search Configuration
+search_sku            = "basic"
+search_replica_count  = 1
+search_partition_count = 1
+
+# Cosmos DB Configuration
+cosmos_consistency_level = "Session"
+
+cosmos_databases = {
+  chat_history = {
+    name       = "chat-history"
+    throughput = 400
+    containers = [
+      {
+        name                = "sessions"
+        partition_key_paths = ["/userId"]
+        throughput          = 400
+      }
+    ]
+  }
+}
+
+# Redis Cache Configuration
+redis_sku_name = "Basic"
+redis_capacity = 0  # C0 - smallest for sandbox
+
+# App Service Configuration
+app_service_plan_sku = "B1"  # Basic tier for sandbox
+app_service_os_type  = "Linux"
+
+# Function App Configuration
+function_app_sku = "Y1"  # Consumption plan for sandbox
+
+# Fabric Configuration
+fabric_capacity_name = "sandboxaiproductadvisorfc"  # Update with actual name if exists
+fabric_sku           = "F2"  # Minimum SKU for sandbox (F2 is the smallest)
+
+# Tags
+tags = {
+  environment = "sandbox"
+  project     = "ai-product-advisor"
+  managed-by  = "terraform"
+  cost-center = "IT"
+  client      = "electrorent"
+  purpose     = "poc-testing"
+}
+

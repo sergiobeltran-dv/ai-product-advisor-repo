@@ -1,0 +1,104 @@
+# Terraform Apply Pipeline - Sandbox Environment
+# Deploys infrastructure to sandbox
+
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - infrastructure/**
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  - group: infrastructure-common
+  - name: environment
+    value: 'sandbox'
+
+stages:
+  - stage: Plan
+    displayName: 'Plan Changes'
+    jobs:
+      - job: TerraformPlan
+        displayName: 'Terraform Plan'
+        steps:
+          - task: TerraformInstaller@0
+            displayName: 'Install Terraform'
+            inputs:
+              terraformVersion: '1.5.0'
+
+          - task: AzureCLI@2
+            displayName: 'Terraform Init & Plan'
+            inputs:
+              azureSubscription: 'electrorent-ai-poc-sub'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                cd infrastructure/environments/$(environment)
+                terraform init \
+                  -backend-config="resource_group_name=$(TF_STATE_RESOURCE_GROUP)" \
+                  -backend-config="storage_account_name=$(TF_STATE_STORAGE_ACCOUNT)" \
+                  -backend-config="container_name=$(TF_STATE_CONTAINER)"
+                terraform plan -out=tfplan
+
+          - task: PublishPipelineArtifact@1
+            displayName: 'Publish Plan'
+            inputs:
+              targetPath: 'infrastructure/environments/$(environment)'
+              artifact: 'terraform-plan'
+
+  - stage: Apply
+    displayName: 'Apply Changes'
+    dependsOn: Plan
+    jobs:
+      - deployment: DeployInfrastructure
+        displayName: 'Deploy Infrastructure'
+        environment: 'sandbox'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - task: DownloadPipelineArtifact@2
+                  displayName: 'Download Plan'
+                  inputs:
+                    artifact: 'terraform-plan'
+                    path: '$(System.DefaultWorkingDirectory)/infrastructure'
+
+                - task: TerraformInstaller@0
+                  displayName: 'Install Terraform'
+                  inputs:
+                    terraformVersion: '1.5.0'
+
+                - task: AzureCLI@2
+                  displayName: 'Terraform Apply'
+                  inputs:
+                    azureSubscription: 'electrorent-ai-poc-sub'
+                    scriptType: 'bash'
+                    scriptLocation: 'inlineScript'
+                    inlineScript: |
+                      cd infrastructure/environments/$(environment)
+                      terraform init \
+                        -backend-config="resource_group_name=$(TF_STATE_RESOURCE_GROUP)" \
+                        -backend-config="storage_account_name=$(TF_STATE_STORAGE_ACCOUNT)" \
+                        -backend-config="container_name=$(TF_STATE_CONTAINER)"
+                      terraform apply -auto-approve tfplan
+
+                - task: AzureCLI@2
+                  displayName: 'Output Infrastructure Info'
+                  inputs:
+                    azureSubscription: 'electrorent-ai-poc-sub'
+                    scriptType: 'bash'
+                    scriptLocation: 'inlineScript'
+                    inlineScript: |
+                      cd infrastructure/environments/$(environment)
+                      terraform output -json > outputs.json
+                      cat outputs.json
+
+                - task: PublishPipelineArtifact@1
+                  displayName: 'Publish Outputs'
+                  inputs:
+                    targetPath: 'infrastructure/environments/$(environment)/outputs.json'
+                    artifact: 'terraform-outputs'
+

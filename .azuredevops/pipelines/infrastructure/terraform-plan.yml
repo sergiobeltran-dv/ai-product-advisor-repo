@@ -1,0 +1,106 @@
+# Terraform Plan Pipeline
+# Runs on PR to validate infrastructure changes
+
+trigger: none  # Triggered by PR only
+
+pr:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - infrastructure/**
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  - group: infrastructure-common
+
+stages:
+  - stage: ValidateSandbox
+    displayName: 'Validate Sandbox'
+    jobs:
+      - job: TerraformPlan
+        displayName: 'Terraform Plan - Sandbox'
+        steps:
+          - task: TerraformInstaller@0
+            displayName: 'Install Terraform'
+            inputs:
+              terraformVersion: '1.5.0'
+
+          - task: AzureCLI@2
+            displayName: 'Terraform Init & Plan'
+            inputs:
+              azureSubscription: 'electrorent-ai-poc-sub'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                cd infrastructure/environments/sandbox
+                terraform init \
+                  -backend-config="resource_group_name=$(TF_STATE_RESOURCE_GROUP)" \
+                  -backend-config="storage_account_name=$(TF_STATE_STORAGE_ACCOUNT)" \
+                  -backend-config="container_name=$(TF_STATE_CONTAINER)"
+                terraform validate
+                terraform plan -out=tfplan
+
+          - task: PublishPipelineArtifact@1
+            displayName: 'Publish Plan'
+            inputs:
+              targetPath: 'infrastructure/environments/sandbox/tfplan'
+              artifact: 'sandbox-tfplan'
+
+  - stage: ValidateDev
+    displayName: 'Validate Dev'
+    dependsOn: []
+    jobs:
+      - job: TerraformPlan
+        displayName: 'Terraform Plan - Dev'
+        steps:
+          - task: TerraformInstaller@0
+            displayName: 'Install Terraform'
+            inputs:
+              terraformVersion: '1.5.0'
+
+          - task: AzureCLI@2
+            displayName: 'Terraform Init & Plan'
+            inputs:
+              azureSubscription: 'electrorent-dev-sub'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                cd infrastructure/environments/dev
+                terraform init \
+                  -backend-config="resource_group_name=$(TF_STATE_RESOURCE_GROUP)" \
+                  -backend-config="storage_account_name=$(TF_STATE_STORAGE_ACCOUNT)" \
+                  -backend-config="container_name=$(TF_STATE_CONTAINER)"
+                terraform validate
+                terraform plan -out=tfplan
+
+  - stage: ValidateProd
+    displayName: 'Validate Prod'
+    dependsOn: []
+    jobs:
+      - job: TerraformPlan
+        displayName: 'Terraform Plan - Prod'
+        steps:
+          - task: TerraformInstaller@0
+            displayName: 'Install Terraform'
+            inputs:
+              terraformVersion: '1.5.0'
+
+          - task: AzureCLI@2
+            displayName: 'Terraform Init & Plan'
+            inputs:
+              azureSubscription: 'electrorent-prod-sub'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                cd infrastructure/environments/prod
+                terraform init \
+                  -backend-config="resource_group_name=$(TF_STATE_RESOURCE_GROUP)" \
+                  -backend-config="storage_account_name=$(TF_STATE_STORAGE_ACCOUNT)" \
+                  -backend-config="container_name=$(TF_STATE_CONTAINER)"
+                terraform validate
+                terraform plan -out=tfplan
+
